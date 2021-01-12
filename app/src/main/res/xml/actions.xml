@@ -53,4 +53,29 @@
                 urlParameter="q"/>
         </fulfillment>
     </action>
+
+
+ <action intentName="actions.intent.UPDATE_CART">
+	 <fulfillment urlTemplate="https://todo.androidappactions.com/search?q={?name};utm_campaign=appactions">
+      <!-- Eg. name = "example name" -->
+      <!-- (Optional) Require a field eg.name for fulfillment with required="true" -->
+      <parameter-mapping urlParameter="name" intentParameter="cart.itemListElement.orderedItem.name" required="true" />
+    </fulfillment>
+
+    <!-- Provide a fallback fulfillment with no required parameters. For example, to your app search or router deeplink -->
+    <fulfillment urlTemplate="https://todo.androidappactions.com/search?q=sdsd;utm_campaign=appactions" />
+  </action>
+
+
+<action intentName="actions.intent.CREATE_ORDER">
+    <fulfillment urlTemplate="https://todo.androidappactions.com/search?q={?description};utm_campaign=appactions">
+      <!-- Eg. description = "Shoes" -->
+      <!-- (Optional) Require a field eg.description for fulfillment with required="true" -->
+      <parameter-mapping urlParameter="description" intentParameter="order.orderedItem.description" required="true" />
+    </fulfillment>
+
+    <!-- Provide a fallback fulfillment with no required parameters. For example, to your app search or router deeplink -->
+    <fulfillment urlTemplate="https://todo.androidappactions.com/search?q=asdsad" />
+  </action>
+
 </actions>
