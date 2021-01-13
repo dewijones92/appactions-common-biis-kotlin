@@ -78,4 +78,24 @@
     <fulfillment urlTemplate="https://todo.androidappactions.com/search?q=asdsad" />
   </action>
 
+<action intentName="actions.intent.CREATE_MESSAGE">
+    <fulfillment urlTemplate="https://todo.androidappactions.com{?text,disambiguatingDescription,name,email,telephone}">
+      <!-- Eg. text = "Message text content" -->
+      <!-- (Optional) Require a field eg.text for fulfillment with required="true" -->
+      <parameter-mapping urlParameter="text" intentParameter="message.text" required="true" />
+      <!-- Eg. disambiguatingDescription = "Video" -->
+      <parameter-mapping urlParameter="disambiguatingDescription" intentParameter="message.disambiguatingDescription" />
+      <!-- Eg. name = "John Doe" -->
+      <parameter-mapping urlParameter="name" intentParameter="message.recipient.name" />
+      <!-- Eg. email = "johndoe@gmail.com" -->
+      <parameter-mapping urlParameter="email" intentParameter="message.recipient.email" />
+      <!-- Eg. telephone = "012-345-6789" -->
+      <parameter-mapping urlParameter="telephone" intentParameter="message.recipient.telephone" />
+    </fulfillment>
+
+    <!-- Provide a fallback fulfillment with no required parameters. For example, to your app search or router deeplink -->
+    <fulfillment urlTemplate="https://todo.androidappactions.com" />
+  </action>
+
+
 </actions>
